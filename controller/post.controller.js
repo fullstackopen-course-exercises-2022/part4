@@ -20,4 +20,4 @@ PostRoute.post('/', (req, res) => {
         })
 })
 
-module.exports = PostRoute;
+module.exports = PostRoute
