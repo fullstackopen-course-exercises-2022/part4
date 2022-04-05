@@ -8,7 +8,7 @@ PostRoute.get('/',  (req, res) => {
         })
 })
 
-PostRoute.post('/', (req, res) => {
+PostRoute.post('/', (req, res, next) => {
     const { title, author, url, likes } = req.body;
     const post = new Blog({
         title, author,
@@ -18,6 +18,7 @@ PostRoute.post('/', (req, res) => {
         .then((results) => {
             res.status(201).json(results)
         })
+        .catch((err) => next(err))
 })
 
 module.exports = PostRoute
