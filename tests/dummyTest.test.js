@@ -45,7 +45,7 @@ const blogs = [
         _id: "5a422bc61b54a676234d17fc",
         title: "Type wars",
         author: "Robert C. Martin",
-        url: "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+        url: "https://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
         likes: 2,
         __v: 0
     }
@@ -62,6 +62,30 @@ describe('Total likes', () => {
         const likes = listHelper.totalLikes(blogs)
         expect(likes).toBe(36)
     })
+    test('returns one like total', () => {
+        const likes = listHelper.totalLikes([blogs[0]])
+        expect(likes).toBe(7)
+    })
 })
 
+describe('find favorite blog post', () => {
+    test('return no posts', () => {
+        const post = listHelper.favoritePost([])
+        expect(post).toEqual({})
+    })
+    test('return favorite blog post', () => {
+        const post = blogs[0]
+        const allLikes = listHelper.favoritePost([post])
+        const favorite = blogs.find(p => p.likes === allLikes.likes)
+        console.log(favorite)
+        expect(favorite).toEqual({
+                _id: "5a422a851b54a676234d17f7",
+                title: "React patterns",
+                author: "Michael Chan",
+                url: "https://reactpatterns.com/",
+                likes: 7,
+                __v: 0
+            })
+    })
+})
 
