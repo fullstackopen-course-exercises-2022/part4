@@ -7,9 +7,13 @@ const { errorHandler } = require('./middle/errorHandler')
 const app = express()
 require('dotenv').config()
 const password = process.env.DB_PASSWORD
+const MongoURI = process.env.MONGODB_URI
 
-const mongoUrl = `mongodb+srv://root:${password}@cluster0.de3qk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-mongoose.connect(mongoUrl)
+app.get('/', (req, res) => {
+    res.send(`<h1>Welcome to the Blog API!</h1>`)
+})
+
+mongoose.connect(MongoURI)
     .then(() => {
         info('Connect to MongoDB Database!')
     })

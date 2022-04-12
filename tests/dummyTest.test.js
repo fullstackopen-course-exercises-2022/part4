@@ -58,6 +58,10 @@ test('returns 1 dummy value', () => {
 })
 
 describe('Total likes', () => {
+    test('returns 0 likes', () => {
+        const likes = listHelper.totalLikes([])
+        expect(likes).toBe(0)
+    })
     test('returns total likes', () => {
         const likes = listHelper.totalLikes(blogs)
         expect(likes).toBe(36)
@@ -71,21 +75,20 @@ describe('Total likes', () => {
 describe('find favorite blog post', () => {
     test('return no posts', () => {
         const post = listHelper.favoritePost([])
-        expect(post).toEqual({})
+        expect(post).toEqual(0)
     })
     test('return favorite blog post', () => {
         const post = blogs[0]
         const allLikes = listHelper.favoritePost([post])
         const favorite = blogs.find(p => p.likes === allLikes.likes)
-        console.log(favorite)
         expect(favorite).toEqual({
-                _id: "5a422a851b54a676234d17f7",
-                title: "React patterns",
-                author: "Michael Chan",
-                url: "https://reactpatterns.com/",
-                likes: 7,
-                __v: 0
-            })
+            _id: "5a422a851b54a676234d17f7",
+            title: "React patterns",
+            author: "Michael Chan",
+            url: "https://reactpatterns.com/",
+            likes: 7,
+            __v: 0
+        })
     })
 })
 
