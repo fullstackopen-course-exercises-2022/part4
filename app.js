@@ -6,7 +6,6 @@ const PostRouter = require('./controller/post.controller')
 const { errorHandler } = require('./middle/errorHandler')
 const app = express()
 require('dotenv').config()
-const password = process.env.DB_PASSWORD
 const MongoURI = process.env.MONGODB_URI
 
 app.get('/', (req, res) => {

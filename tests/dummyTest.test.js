@@ -1,4 +1,4 @@
-const listHelper = require('../util/list_helper.js');
+const listHelper = require('../util/listHelper.js');
 
 const blogs = [
     {
