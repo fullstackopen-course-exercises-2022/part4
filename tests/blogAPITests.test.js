@@ -35,7 +35,6 @@ describe('post new blog', () => {
         expect(contents).toHaveLength(blogTestHelper.initialBlogs.length + 1)
 
         expect(titles).toContain(formData.title)
-        console.log(titles)
     })
 
     test('like content missing default to 0', async () => {
@@ -68,8 +67,6 @@ describe('post new blog', () => {
         expect(blogs).toHaveLength(blogTestHelper.initialBlogs.length)
     })
 })
-
-
 
 describe('get blog info', () => {
     test('get blogs', async () => {
@@ -119,8 +116,6 @@ test('delete blog', async () => {
     }
     const blogsAtStart = await blogTestHelper.blogsInDB()
     const blogToView = blogsAtStart.find(blog => blog?.title === blogData?.title)
-
-    logger.info(blogToView)
 
     await api.delete(`/api/blogs/${blogToView?.id}`)
         .expect(204)
