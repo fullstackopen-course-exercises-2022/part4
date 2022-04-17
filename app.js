@@ -3,6 +3,7 @@ const { info, error } = require('./util/logger')
 const express = require('express')
 const cors = require('cors')
 const PostRouter = require('./controller/post.controller')
+const UserRouter = require('./controller/user.controller')
 const { errorHandler } = require('./middle/errorHandler')
 const app = express()
 require('dotenv').config()
@@ -22,6 +23,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/blogs', PostRouter)
+app.use('/api/users', UserRouter)
 
 app.use(errorHandler)
 
