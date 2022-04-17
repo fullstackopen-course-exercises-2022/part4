@@ -1,5 +1,4 @@
 const Blog = require('../models/post.model')
-const User = require('../models/users.model')
 const requiredLogin = require('../middle/requireLogin')
 const PostRoute = require('express').Router()
 const logger = require('../util/logger')
